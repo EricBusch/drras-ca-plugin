@@ -57,17 +57,11 @@ define( 'DRRAS_BASENAME', plugin_basename( __FILE__ ) );
  * You can edit the "values" (which are Post IDs) if you need to change a page to link to.
  */
 const DRRAS_ROUTES = [
-	'about'          => 152,
-	'blog'           => 267,
-	'consultation'   => 150,
-	'contact'        => 273,
-	'financing'      => 217,
-	'homepage'       => 187,
-	'pamphlets'      => 477,
-	'press'          => 269,
+	'about'          => 10,
+	'contact'        => 12,
+	'homepage'       => 19,
 	'privacy-policy' => 3,
-	'treatments'     => 91,
-	'skin'           => 96,
+	'treatments'     => 7,
 ];
 
 /**

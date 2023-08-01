@@ -217,3 +217,43 @@ function drras_get_prev_object( array $objects, int $current_object_id ): ?WP_Po
 
 	return $objects[0];
 }
+
+function drras_get_menu_item_markup( WP_Post $item, array $attributes = [] ): string {
+
+	$format = '<a href="%s"%s>%s</a>';
+
+	$url     = esc_url( $item->url );
+	$content = $item->title;
+
+	$id      = esc_attr( $attributes['id'] ?? '' );
+	$classes = esc_attr( trim( implode( ' ', $item->classes ) . ' ' . $attributes['class'] ) );
+	$title   = esc_attr( trim( $item->attr_title ) );
+	$target  = esc_attr( trim( $item->target ) );
+
+	$attrs = [];
+
+	if ( $id ) {
+		$attrs[] = 'id="' . $id . '"';
+	}
+
+	if ( $classes ) {
+		$attrs[] = 'class="' . $classes . '"';
+	}
+
+	if ( $title ) {
+		$attrs[] = 'title="' . $title . '"';
+	}
+
+	if ( $target ) {
+		$attrs[] = 'target="' . $target . '"';
+	}
+
+	$attrs = empty( $attrs ) ? '' : ' ' . implode( $attrs );
+
+	return sprintf(
+		$format,
+		$url,
+		$attrs,
+		$content
+	);
+}
