@@ -72,6 +72,13 @@ add_action( 'acf/init', function () {
 		'page_title'  => __( 'Phrase Options' ),
 		'parent_slug' => $parent['menu_slug'],
 	] );
+
+	// Add Phrase Options subpage.
+	acf_add_options_sub_page( [
+		'menu_title'  => __( 'Certifications' ),
+		'page_title'  => __( 'Certification Options' ),
+		'parent_slug' => $parent['menu_slug'],
+	] );
 } );
 
 

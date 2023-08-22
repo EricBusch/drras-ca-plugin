@@ -139,6 +139,12 @@ function drras_get_acf_options_image_field_url( string $field, string $size = 't
 	return $image ? wp_get_attachment_image_url( $image['ID'], $size ) : '';
 }
 
+function drras_get_post_field( string $field, $default = null ): mixed {
+	$value = get_field( $field );
+
+	return empty( $value ) ? $default : $value;
+}
+
 function drras_get_phone_href( string $phone_number ): string {
 	$digits = preg_replace( '/[^0-9]/', '', $phone_number );
 
@@ -149,10 +155,10 @@ function drras_get_email_href( string $email_address ): string {
 	return sprintf( 'mailto:%s', trim( $email_address ) );
 }
 
-function drras_phrase( string $field, array $replace_pairs = [] ): string {
+function drras_phrase( string $field, array $replacement_pairs = [] ): string {
 	$field = str_starts_with( $field, 'phrase_' ) ? $field : 'phrase_' . $field;
 
-	return strtr( get_field( $field, 'options' ), $replace_pairs );
+	return strtr( get_field( $field, 'options' ), $replacement_pairs );
 }
 
 function drras_kses( string $content ): string {
@@ -256,4 +262,16 @@ function drras_get_menu_item_markup( WP_Post $item, array $attributes = [] ): st
 		$attrs,
 		$content
 	);
+}
+
+function drras_boldify_rassouli( string $text ): string {
+
+	$replacement_pairs = [
+		'A Rassouli'        => '<strong>A Rassouli</strong>',
+		'A. Rassouli'       => '<strong>A. Rassouli</strong>',
+		'Alipasha Rassouli' => '<strong>Alipasha Rassouli</strong>',
+		'Rassouli A'        => '<strong>Rassouli A</strong>',
+	];
+
+	return strtr( $text, $replacement_pairs );
 }
