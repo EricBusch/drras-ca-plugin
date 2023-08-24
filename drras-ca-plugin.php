@@ -58,6 +58,7 @@ define( 'DRRAS_BASENAME', plugin_basename( __FILE__ ) );
  */
 const DRRAS_ROUTES = [
 	'about'          => 10,
+	'consultations'  => 286,
 	'contact'        => 12,
 	'homepage'       => 19,
 	'privacy-policy' => 3,
