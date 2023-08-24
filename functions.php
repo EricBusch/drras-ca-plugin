@@ -85,7 +85,7 @@ function drras_get_surgical_treatments(): array {
 
 		$posts = get_posts( [
 			'post_type'        => 'surgicaltreatment',
-			'orderby'          => 'post_title',
+			'orderby'          => 'menu_order',
 			'order'            => 'ASC',
 			'numberposts'      => 99,
 			'suppress_filters' => true,
@@ -169,16 +169,16 @@ function drras_kses_e( string $content ): void {
 	echo drras_kses( $content );
 }
 
-function drras_get_next_nonsurgicaltreatment( int $current_nonsurgicaltreatment_id ): ?WP_Post {
-	$treatments = drras_get_nonsurgical_treatments();
+function drras_get_next_surgicaltreatment( int $current_surgicaltreatment_id ): ?WP_Post {
+	$treatments = drras_get_surgical_treatments();
 
-	return drras_get_next_object( $treatments, $current_nonsurgicaltreatment_id );
+	return drras_get_next_object( $treatments, $current_surgicaltreatment_id );
 }
 
-function drras_get_prev_nonsurgicaltreatment( int $current_nonsurgicaltreatment_id ): ?WP_Post {
-	$treatments = drras_get_nonsurgical_treatments();
+function drras_get_prev_surgicaltreatment( int $current_surgicaltreatment_id ): ?WP_Post {
+	$treatments = drras_get_surgical_treatments();
 
-	return drras_get_prev_object( $treatments, $current_nonsurgicaltreatment_id );
+	return drras_get_prev_object( $treatments, $current_surgicaltreatment_id );
 }
 
 /**
