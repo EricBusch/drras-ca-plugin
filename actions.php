@@ -23,6 +23,18 @@ function helo( $phpmailer ): void {
 add_action( 'phpmailer_init', 'helo' );
 
 /**
+ * Remove reCAPTCHA badge from appearing in the bottom right corner of every page which
+ * doesn't have a Contact Form 7 form on it.
+ */
+add_action( 'wp_print_scripts', function () {
+	global $post;
+	if ( is_a( $post, 'WP_Post' ) && ! has_shortcode( $post->post_content, 'contact-form-7' ) ) {
+		wp_dequeue_script( 'google-recaptcha' );
+		wp_dequeue_script( 'wpcf7-recaptcha' );
+	}
+} );
+
+/**
  * Add ACF Options and Suboptions to admin sidebar.
  */
 add_action( 'acf/init', function () {
