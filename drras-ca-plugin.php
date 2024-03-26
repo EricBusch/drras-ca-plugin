@@ -3,7 +3,7 @@
  * Plugin Name: Custom Plugin
  * Description: Custom code. Don't deactivate or delete.
  * License: GPL v3
- * Version: 1.0.2
+ * Version: 1.0.3
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@
 /**
  * Plugin version
  */
-const DRRAS_VERSION = '1.0.0';
+const DRRAS_VERSION = '1.0.3';
 
 /**
  * /absolute/path/to/wp-content/plugins/profilemc/profilemc.php
@@ -58,6 +58,7 @@ define( 'DRRAS_BASENAME', plugin_basename( __FILE__ ) );
  */
 const DRRAS_ROUTES = [
 	'about'          => 10,
+	'blog'           => 837,
 	'consultations'  => 286,
 	'contact'        => 12,
 	'homepage'       => 19,
